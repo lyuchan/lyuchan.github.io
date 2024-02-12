@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #131313;
+}
+
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #ffffff;
+
+}
+
+
+@media only screen and (min-width: 1400px) {
+    .content {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+
+    }
+
+    .content .photo {
+        width: 40%;
+    }
+
+    .content .photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .content .info {
+        width: 50%;
+    }
+
+    .content .info h2 {
+        font-size: 70px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    del {
+        font-size: 10px;
+    }
+
+    .content .info p {
+        font-size: 30px;
+        color: #dfdfdf;
+        line-height: 1;
+    }
+
+    .skill {
+        font-size: 40px;
+        color: #dfdfdf;
+        padding: 20px;
+    }
+}
+
+@media only screen and (min-width: 894px) and (max-width: 1399px) {
+    .content {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+
+    }
+
+    .content .photo {
+        width: 40%;
+    }
+
+    .content .photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .content .info {
+        width: 50%;
+    }
+
+    .content .info h2 {
+        font-size: 50px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    del {
+        font-size: 5px;
+    }
+
+    .content .info p {
+        font-size: 25px;
+        color: #dfdfdf;
+        line-height: 1;
+    }
+
+    .skill {
+        font-size: 25px;
+        color: #dfdfdf;
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 894px) {
+    .content {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        flex-direction: column;
+    }
+
+    .content .photo {
+        width: 100%;
+    }
+
+    .content .photo img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+
+    .content .info {
+        width: 100%;
+    }
+
+    .content .info h2 {
+        font-size: 50px;
+        color: #ffffff;
+        margin-bottom: 10px;
+    }
+
+    del {
+        font-size: 5px;
+    }
+
+    .content .info p {
+        font-size: 25px;
+        color: #dfdfdf;
+        line-height: 1;
+    }
+
+
+    .skill {
+        font-size: 20px;
+        color: #dfdfdf;
+        padding: 20px;
+    }
+
+}
+
+
+
+
+
+
+
+.footer {
+    background-color: #1f1f1f;
+    padding: 10px;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.footer a {
+    padding: 10px;
+}
+
+
+
+li {
+    padding: 10px;
+}
