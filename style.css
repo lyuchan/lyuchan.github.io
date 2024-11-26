@@ -3,199 +3,114 @@
 }
 
 body {
-    background-color: #131313;
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-
 .container {
-    max-width: 100%;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0;
+    padding: 20px;
+    background-color: #1e1e1e;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .header {
-    background-color: #1f1f1f;
-    padding: 20px;
     text-align: center;
-
+    padding: 20px 0;
 }
 
 .header h1 {
     font-size: 36px;
     color: #ffffff;
-
 }
 
-
-@media only screen and (min-width: 1400px) {
-    .content {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-
-    }
-
-    .content .photo {
-        width: 40%;
-    }
-
-    .content .photo img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .content .info {
-        width: 50%;
-    }
-
-    .content .info h2 {
-        font-size: 70px;
-        color: #ffffff;
-        margin-bottom: 10px;
-    }
-
-    del {
-        font-size: 10px;
-    }
-
-    .content .info p {
-        font-size: 30px;
-        color: #dfdfdf;
-        line-height: 1;
-    }
-
-    .skill {
-        font-size: 40px;
-        color: #dfdfdf;
-        padding: 20px;
-    }
+.main-content {
+    margin: 20px 0;
 }
 
-@media only screen and (min-width: 894px) and (max-width: 1399px) {
-    .content {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-
-    }
-
-    .content .photo {
-        width: 40%;
-    }
-
-    .content .photo img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .content .info {
-        width: 50%;
-    }
-
-    .content .info h2 {
-        font-size: 50px;
-        color: #ffffff;
-        margin-bottom: 10px;
-    }
-
-    del {
-        font-size: 5px;
-    }
-
-    .content .info p {
-        font-size: 25px;
-        color: #dfdfdf;
-        line-height: 1;
-    }
-
-    .skill {
-        font-size: 25px;
-        color: #dfdfdf;
-        padding: 20px;
-    }
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 894px) {
-    .content {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        flex-direction: column;
-    }
-
-    .content .photo {
-        width: 100%;
-    }
-
-    .content .photo img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
-
-    .content .info {
-        width: 100%;
-    }
-
-    .content .info h2 {
-        font-size: 50px;
-        color: #ffffff;
-        margin-bottom: 10px;
-    }
-
-    del {
-        font-size: 5px;
-    }
-
-    .content .info p {
-        font-size: 25px;
-        color: #dfdfdf;
-        line-height: 1;
-    }
-
-
-    .skill {
-        font-size: 20px;
-        color: #dfdfdf;
-        padding: 20px;
-    }
-
-}
-
-
-
-
-
-
-
-.footer {
-    background-color: #1f1f1f;
-    padding: 10px;
+.photo {
+    flex: 1;
     text-align: center;
 }
 
-.footer p {
-    font-size: 14px;
+.photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.info {
+    flex: 2;
+    padding-left: 20px;
+    max-width: 547px;
+    margin: 0 auto;
+}
+
+.info h2 {
+    font-size: 24px;
     color: #ffffff;
 }
 
-.footer a {
-    padding: 10px;
+.info p {
+    font-size: 16px;
+    color: #dddddd;
+    line-height: 1.5;
 }
 
+.skills {
+    margin-top: 20px;
+}
 
+.skills h2 {
+    font-size: 24px;
+    color: #ffffff;
+}
 
-li {
+.skills ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skills li {
+    background: #333333;
+    margin: 5px 0;
     padding: 10px;
+    border-radius: 5px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+.footer .social-links {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.footer a:hover {
+    color: #6e6e6e;
 }
