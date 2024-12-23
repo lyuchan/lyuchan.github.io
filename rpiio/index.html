@@ -22,6 +22,10 @@
             align-items: center;
         }
 
+        .cardboard {
+            margin-bottom: 150px
+        }
+
         .title {
             text-align: center;
             font-size: 50px;
@@ -58,6 +62,10 @@
         }
 
         @media (max-width: 850px) {
+            .cardboard {
+                margin-bottom: 0px
+            }
+
             .title {
                 font-size: 28px;
             }
@@ -96,7 +104,7 @@
 </head>
 
 <body>
-    <div style="margin-bottom: 150px">
+    <div class="cardboard">
         <h1 class="title">Raspberry PI GPIO 地址轉換</h1>
         <div class="container" id="cardContainer">
             <div class="card">
