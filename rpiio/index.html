@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Raspberry PI GPIO 地址轉換</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #1b1b1b;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .card {
+            background-color: #1b1b1b;
+            color: #fff;
+            border: 3px solid #ccc;
+            border-radius: 30px;
+            padding: 16px;
+            margin: 10px;
+            /* 三列 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .data-select {
+            margin-left: auto;
+            padding: 10px;
+            font-size: 25px;
+            border-radius: 5px;
+            background-color: #1b1b1b;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+
+        @media (max-width: 800px) {
+            .card {
+                width: calc(50% - 20px);
+                /* 一列 */
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #1f1f1f;
+            color: #ffffff;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer .social-links {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .footer a:hover {
+            color: #6e6e6e;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-bottom: 150px">
+        <h1 class="title">Raspberry PI GPIO 地址轉換</h1>
+        <div class="container" id="cardContainer">
+            <div class="card">
+                <h2>GPIO ADDR</h2>
+                <select id="gpioSelect" class="data-select" onchange="change('GPIO');">
+                </select>
+            </div>
+            <div class="card">
+                <h2>Board ADDR</h2>
+                <select id="boardSelect" class="data-select" onchange="change('Board');">
+                </select>
+            </div>
+            <div class="card">
+                <h2>Kernel ADDR</h2>
+                <select id="kernelSelect" class="data-select" onchange="change('Kernel');">
+                </select>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/lyuchan0831/" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100015250785911" title="Facebook"><i
+                    class="fab fa-facebook"></i></a>
+            <a href="https://t.me/lyuchanwang" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://github.com/lyuchan" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/channel/UCEjkbez05P4NR3x453tX5sA" title="YouTube"><i
+                    class="fab fa-youtube"></i></a>
+            <a href="mailto:david12312330@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>© 2024 Lyuchan. All rights reserved.</p>
+    </footer>
+    <script>
+        const data = [{ "gpioaddr": 0, "boardaddr": 27, "kerneladdr": 512 }, { "gpioaddr": 1, "boardaddr": 28, "kerneladdr": 513 }, { "gpioaddr": 2, "boardaddr": 3, "kerneladdr": 514 }, { "gpioaddr": 3, "boardaddr": 5, "kerneladdr": 515 }, { "gpioaddr": 4, "boardaddr": 7, "kerneladdr": 516 }, { "gpioaddr": 5, "boardaddr": 29, "kerneladdr": 517 }, { "gpioaddr": 6, "boardaddr": 31, "kerneladdr": 518 }, { "gpioaddr": 7, "boardaddr": 26, "kerneladdr": 519 }, { "gpioaddr": 8, "boardaddr": 24, "kerneladdr": 520 }, { "gpioaddr": 9, "boardaddr": 21, "kerneladdr": 521 }, { "gpioaddr": 10, "boardaddr": 19, "kerneladdr": 522 }, { "gpioaddr": 11, "boardaddr": 23, "kerneladdr": 523 }, { "gpioaddr": 12, "boardaddr": 32, "kerneladdr": 524 }, { "gpioaddr": 13, "boardaddr": 33, "kerneladdr": 525 }, { "gpioaddr": 14, "boardaddr": 8, "kerneladdr": 526 }, { "gpioaddr": 15, "boardaddr": 10, "kerneladdr": 527 }, { "gpioaddr": 16, "boardaddr": 36, "kerneladdr": 528 }, { "gpioaddr": 17, "boardaddr": 11, "kerneladdr": 529 }, { "gpioaddr": 18, "boardaddr": 12, "kerneladdr": 530 }, { "gpioaddr": 19, "boardaddr": 35, "kerneladdr": 531 }, { "gpioaddr": 20, "boardaddr": 38, "kerneladdr": 532 }, { "gpioaddr": 21, "boardaddr": 40, "kerneladdr": 533 }, { "gpioaddr": 22, "boardaddr": 15, "kerneladdr": 534 }, { "gpioaddr": 23, "boardaddr": 16, "kerneladdr": 535 }, { "gpioaddr": 24, "boardaddr": 18, "kerneladdr": 536 }, { "gpioaddr": 25, "boardaddr": 22, "kerneladdr": 537 }, { "gpioaddr": 26, "boardaddr": 37, "kerneladdr": 538 }, { "gpioaddr": 27, "boardaddr": 13, "kerneladdr": 539 }];
+        const gpioSelect = document.getElementById('gpioSelect');
+        const boardSelect = document.getElementById('boardSelect');
+        const kernelSelect = document.getElementById('kernelSelect');
+        data.forEach((element, index) => {
+            const gpioSelectOption = document.createElement('option');
+            gpioSelectOption.value = index;
+            gpioSelectOption.text = element.gpioaddr;
+            const boardSelectOption = document.createElement('option');
+            boardSelectOption.value = index;
+            boardSelectOption.text = element.boardaddr;
+            const kernelSelectOption = document.createElement('option');
+            kernelSelectOption.value = index;
+            kernelSelectOption.text = element.kerneladdr;
+            gpioSelect.add(gpioSelectOption);
+            boardSelect.add(boardSelectOption);
+            kernelSelect.add(kernelSelectOption);
+        });
+        function change(name) {
+            switch (name) {
+                case 'GPIO':
+                    boardSelect.value = gpioSelect.value;
+                    kernelSelect.value = gpioSelect.value;
+                    break;
+                case 'Board':
+                    gpioSelect.value = boardSelect.value;
+                    kernelSelect.value = boardSelect.value;
+                    break;
+                case 'Kernel':
+                    gpioSelect.value = kernelSelect.value;
+                    boardSelect.value = kernelSelect.value;
+                    break;
+            }
+        }
+    </script>
+</body>
+
+</html>
