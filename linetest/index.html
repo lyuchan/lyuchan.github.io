@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFF 使用者資訊</title>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .user-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>使用者資訊</h1>
+    <div class="user-info">
+        <p>名稱: <span id="userName"></span></p>
+        <p>簡介: <span id="userStatusMessage"></span></p>
+        <p>頭貼: <img id="userPicture" src="" alt="頭貼" style="width: 100px; height: 100px;"></p>
+        <p>UUID: <span id="userId"></span></p>
+    </div>
+
+    <script>
+        // 初始化 LIFF
+        liff.init({ liffId: 'YOUR_LIFF_ID' }, () => {
+            if (liff.isLoggedIn()) {
+                getUserProfile();
+            } else {
+                // 登入失敗時帶入假參數
+                handleLoginFailure();
+            }
+        }, err => {
+            console.error(err);
+            // 登入失敗時帶入假參數
+            handleLoginFailure();
+        });
+
+        // 取得使用者資料
+        function getUserProfile() {
+            liff.getProfile().then(profile => {
+                document.getElementById('userName').textContent = profile.displayName;
+                document.getElementById('userStatusMessage').textContent = profile.statusMessage;
+                document.getElementById('userPicture').src = profile.pictureUrl;
+                document.getElementById('userId').textContent = profile.userId;
+            }).catch(err => console.error(err));
+        }
+
+        // 處理登入失敗
+        function handleLoginFailure() {
+            // 顯示假資料
+            document.getElementById('userName').textContent = 'lyuchan';
+            document.getElementById('userStatusMessage').textContent = 'just do it';
+            document.getElementById('userPicture').src = './avatar.png';
+            document.getElementById('userId').textContent = '123456789';
+        }
+    </script>
+</body>
+
+</html>
