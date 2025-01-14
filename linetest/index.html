@@ -41,6 +41,7 @@
                     initializeApp();
                 })
                 .catch((err) => {
+                    console.error('LIFF initialization failed ', err);
                 });
         }
 
@@ -53,7 +54,7 @@
                     document.getElementById('userPicture').src = profile.pictureUrl;
                     document.getElementById('userId').textContent = profile.userId;
                 }).catch(function (error) {
-                 
+                    console.error('Error getting profile: ', error);
                 });
             } else {
                 liff.login({ redirectUri: 'https://liff.line.me/2005553288-GWg7kzgQ' });
