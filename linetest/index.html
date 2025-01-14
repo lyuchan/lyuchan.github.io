@@ -28,36 +28,36 @@
 
     <script>
         // 初始化 LIFF
-        liff.init({ liffId: '2005553288-GWg7kzgQ' }, () => {
-            if (liff.isLoggedIn()) {
-                getUserProfile();
-            } else {
-                // 登入失敗時帶入假參數
-                handleLoginFailure();
-            }
-        }, err => {
-            console.error(err);
-            // 登入失敗時帶入假參數
-            handleLoginFailure();
-        });
+        window.onload = function (e) {
+            initializeLiff('2005553288-GWg7kzgQ');
+        };
 
-        // 取得使用者資料
-        function getUserProfile() {
-            liff.getProfile().then(profile => {
-                document.getElementById('userName').textContent = profile.displayName;
-                document.getElementById('userStatusMessage').textContent = profile.statusMessage;
-                document.getElementById('userPicture').src = profile.pictureUrl;
-                document.getElementById('userId').textContent = profile.userId;
-            }).catch(err => console.error(err));
+        function initializeLiff(myLiffId) {
+            liff
+                .init({
+                    liffId: myLiffId
+                })
+                .then(() => {
+                    initializeApp();
+                })
+                .catch((err) => {
+                });
         }
 
-        // 處理登入失敗
-        function handleLoginFailure() {
-            // 顯示假資料
-            document.getElementById('userName').textContent = 'lyuchan';
-            document.getElementById('userStatusMessage').textContent = 'just do it';
-            document.getElementById('userPicture').src = './avatar.png';
-            document.getElementById('userId').textContent = '123456789';
+        function initializeApp(data) {
+            if (liff.isLoggedIn()) {
+                liff.getProfile().then(function (profile) {
+
+                    document.getElementById('userName').textContent = profile.displayName;
+                    document.getElementById('userStatusMessage').textContent = profile.statusMessage;
+                    document.getElementById('userPicture').src = profile.pictureUrl;
+                    document.getElementById('userId').textContent = profile.userId;
+                }).catch(function (error) {
+                 
+                });
+            } else {
+                liff.login({ redirectUri: 'https://liff.line.me/2005553288-GWg7kzgQ' });
+            }
         }
     </script>
 </body>
