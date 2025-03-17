@@ -269,7 +269,7 @@
             function getColorForPercentage(percentage) {
                 // 從綠色 (#4CAF50) 到紅色 (#FF0000) 的漸變
                 // 低音量為綠色，高音量為紅色
-                if (percentage <= 0) return '#4CAF50'; // 綠色
+                if (percentage <= 50) return '#4CAF50'; // 綠色
                 if (percentage >= 100) return '#FF0000'; // 紅色
 
                 // 計算紅色和綠色分量
