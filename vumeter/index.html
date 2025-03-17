@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音量表頭</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .container {
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .meter-container {
+            width: 100%;
+            height: 50px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #4CAF50;
+            /* 初始顏色，會被JS動態修改 */
+            transition: width 0.1s ease, background-color 0.1s ease;
+        }
+
+        .volume-value {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .no-sound {
+            background-color: red;
+        }
+
+        /* 倒數計時器樣式 */
+        .countdown-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .countdown-container.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .countdown-number {
+            font-size: 15rem;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>音量表頭</h1>
+        <div class="meter-container">
+            <div class="meter-fill" id="meter"></div>
+        </div>
+        <div class="volume-value" id="volume-value">音量: 0</div>
+        <div class="status" id="status">狀態: 等待麥克風權限</div>
+        <button id="start-btn">開始監聽</button>
+    </div>
+
+    <!-- 倒數計時器 -->
+    <div class="countdown-container" id="countdown-container">
+        <div class="countdown-number" id="countdown-number">10</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startBtn = document.getElementById('start-btn');
+            const meter = document.getElementById('meter');
+            const volumeValue = document.getElementById('volume-value');
+            const statusElement = document.getElementById('status');
+            const body = document.body;
+            const countdownContainer = document.getElementById('countdown-container');
+            const countdownNumber = document.getElementById('countdown-number');
+
+            let audioContext;
+            let analyser;
+            let microphone;
+            let javascriptNode;
+            let isListening = false;
+            let silenceTimer = null;
+            let countdownValue = 10;
+            let isCountingDown = false;
+            let silenceStartTime = null;
+            let silenceDetectionDelay = 1000; // 1秒延遲
+            let isBackgroundRed = false; // 追蹤背景是否已變紅
+
+            // 無聲音閾值 (可調整)
+            const silenceThreshold = 5;
+
+            startBtn.addEventListener('click', () => {
+                if (!isListening) {
+                    startListening();
+                } else {
+                    stopListening();
+                }
+            });
+
+            function startListening() {
+                try {
+                    // 創建音頻上下文
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioContext.createAnalyser();
+
+                    // 設置分析器參數
+                    analyser.fftSize = 256;
+                    analyser.smoothingTimeConstant = 0.8;
+
+                    // 請求麥克風權限
+                    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+                        .then(stream => {
+                            statusElement.textContent = '狀態: 正在監聽';
+                            startBtn.textContent = '停止監聽';
+                            isListening = true;
+                            isBackgroundRed = false; // 重置背景狀態
+
+                            // 連接麥克風到分析器
+                            microphone = audioContext.createMediaStreamSource(stream);
+                            microphone.connect(analyser);
+
+                            // 開始分析音量
+                            analyseVolume();
+                        })
+                        .catch(error => {
+                            statusElement.textContent = `狀態: 錯誤 - ${error.message}`;
+                            console.error('獲取麥克風權限時出錯:', error);
+                        });
+                } catch (error) {
+                    statusElement.textContent = `狀態: 錯誤 - ${error.message}`;
+                    console.error('創建音頻上下文時出錯:', error);
+                }
+            }
+
+            function stopListening() {
+                if (audioContext && audioContext.state !== 'closed') {
+                    if (microphone) {
+                        microphone.disconnect();
+                    }
+                    audioContext.close();
+                    statusElement.textContent = '狀態: 已停止';
+                    startBtn.textContent = '開始監聽';
+                    isListening = false;
+                    meter.style.width = '0%';
+                    meter.style.backgroundColor = '#4CAF50'; // 重置表頭顏色為綠色
+                    volumeValue.textContent = '音量: 0';
+                    body.classList.remove('no-sound');
+                    body.style.backgroundColor = 'white';
+                    isBackgroundRed = false; // 重置背景狀態
+
+                    // 停止倒數計時
+                    stopCountdown();
+                    silenceStartTime = null;
+                }
+            }
+
+            function analyseVolume() {
+                if (!isListening) return;
+
+                // 創建數據數組
+                const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+                // 獲取音量數據
+                analyser.getByteFrequencyData(dataArray);
+
+                // 計算平均音量
+                let sum = 0;
+                for (let i = 0; i < dataArray.length; i++) {
+                    sum += dataArray[i];
+                }
+                const average = sum / dataArray.length;
+
+                // 更新音量表頭
+                const volume = Math.round(average);
+                const percentage = Math.min(100, volume * 2); // 放大效果
+                meter.style.width = `${percentage}%`;
+
+                // 根據音量設置表頭顏色 (從綠色漸變到紅色)
+                const colorPercentage = Math.min(100, percentage);
+                const color = getColorForPercentage(colorPercentage);
+                meter.style.backgroundColor = color;
+
+                volumeValue.textContent = `音量: ${volume}`;
+
+                // 根據音量處理倒數計時和背景顏色
+                if (volume <= silenceThreshold) {
+                    // 沒有聲音
+                    if (!isBackgroundRed) { // 只有在背景不是紅色時才進行倒數
+                        const currentTime = Date.now();
+
+                        if (silenceStartTime === null) {
+                            silenceStartTime = currentTime;
+                        } else if (!isCountingDown && (currentTime - silenceStartTime >= silenceDetectionDelay)) {
+                            // 已經安靜超過1秒，開始倒數
+                            startCountdown();
+                        }
+                    }
+                } else {
+                    // 有聲音，重置所有狀態
+                    silenceStartTime = null;
+                    stopCountdown();
+                    body.style.backgroundColor = 'white';
+                    isBackgroundRed = false;
+                }
+
+                // 繼續分析
+                requestAnimationFrame(analyseVolume);
+            }
+
+            // 根據百分比獲取顏色 (從綠色漸變到紅色)
+            function getColorForPercentage(percentage) {
+                // 從綠色 (#4CAF50) 到紅色 (#FF0000) 的漸變
+                // 低音量為綠色，高音量為紅色
+                if (percentage <= 0) return '#4CAF50'; // 綠色
+                if (percentage >= 100) return '#FF0000'; // 紅色
+
+                // 計算紅色和綠色分量
+                const red = Math.floor(76 + (255 - 76) * (percentage / 100));
+                const green = Math.floor(175 - 175 * (percentage / 100));
+                const blue = Math.floor(80 - 80 * (percentage / 100));
+
+                return `rgb(${red}, ${green}, ${blue})`;
+            }
+
+            // 開始倒數計時
+            function startCountdown() {
+                if (isCountingDown) return;
+
+                isCountingDown = true;
+                countdownValue = 10;
+                countdownNumber.textContent = countdownValue;
+                countdownContainer.classList.add('active');
+
+                silenceTimer = setInterval(() => {
+                    countdownValue--;
+                    countdownNumber.textContent = countdownValue;
+
+                    if (countdownValue <= 0) {
+                        // 倒數結束，背景變紅
+                        clearInterval(silenceTimer);
+                        body.style.backgroundColor = 'red';
+                        countdownContainer.classList.remove('active');
+                        isCountingDown = false;
+                        isBackgroundRed = true; // 設置背景已變紅
+                    }
+                }, 1000);
+            }
+
+            // 停止倒數計時
+            function stopCountdown() {
+                if (silenceTimer) {
+                    clearInterval(silenceTimer);
+                    silenceTimer = null;
+                }
+                countdownContainer.classList.remove('active');
+                isCountingDown = false;
+            }
+        });
+    </script>
+</body>
+
+</html>
