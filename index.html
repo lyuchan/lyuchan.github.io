@@ -7,48 +7,320 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <title>王律承自我介紹</title>
 </head>
 
 <body>
     <div class="container">
         <header class="header">
-            <h1>王律承 Lyuchan Wang</h1>
+            <h1>王律承 <span class="highlight">Lyuchan Wang</span></h1>
+            <div class="subtitle">程式開發 | 活動硬體工程</div>
         </header>
 
         <main class="main-content">
             <section class="profile">
                 <div class="photo">
-                    <img src="avatar.png" alt="avatar">
+                    <img src="avatar.png" alt="王律承的頭像">
                 </div>
                 <div class="info">
-                    <h2>自我介紹:</h2>
+                    <h2>自我介紹</h2>
                     <p>嗨，我是王律承，目前就讀於明志科大電機工程系。我喜歡用程式解決問題，並享受挑戰。我擁有良好的溝通能力和團隊合作精神，對創新和技術應用充滿熱情。</p>
+                    <div class="quote">
+                        <i class="fas fa-quote-left"></i>
+                        <span>Just Do It</span>
+                        <i class="fas fa-quote-right"></i>
+                    </div>
                 </div>
             </section>
 
             <section class="skills">
-                <h2>技能:</h2>
-                <ul>
-                    <li><b>硬體設計</b><br>Arduino、ESP、RaspberryPi、STM32、FPGA/CPLD</li>
-                    <li><b>軟體/網頁設計</b><br>HTML5、CSS3、Javascript、Node.js、Python、C/C++</li>
-                    <li><b>活動硬體工程</b><br>燈光音響視訊工程都一點點</li>
-                </ul>
+                <h2>專業技能</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="skill-content">
+                            <h3>硬體設計</h3>
+                            <div class="skill-items">
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="arduino">Arduino</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="esp32">ESP32</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="raspberrypi">RaspberryPi</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="stm32">STM32</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="fpga">FPGA/CPLD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="skill-content">
+                            <h3>軟體/網頁設計</h3>
+                            <div class="skill-items">
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="html5">HTML5</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="css3">CSS3</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="javascript">JavaScript</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="nodejs">Node.js</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="python">Python</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="cpp">C/C++</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div class="skill-content">
+                            <h3>活動硬體工程</h3>
+                            <div class="skill-items">
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="lighting">燈光</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="audio">音響</span>
+                                </div>
+                                <div class="skill-tag-container">
+                                    <span class="skill-tag" data-skill="video">視訊工程</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer class="footer">
             <div class="social-links">
-                <a href="https://www.instagram.com/lyuchan0831/" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=100015250785911" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="https://t.me/lyuchanwang" title="Telegram"><i class="fab fa-telegram"></i></a>
-                <a href="https://github.com/lyuchan" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.youtube.com/channel/UCEjkbez05P4NR3x453tX5sA" title="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="mailto:david12312330@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.instagram.com/lyuchan0831/" title="Instagram" aria-label="Instagram連結"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100015250785911" title="Facebook"
+                    aria-label="Facebook連結"><i class="fab fa-facebook"></i></a>
+                <a href="https://t.me/lyuchanwang" title="Telegram" aria-label="Telegram連結"><i
+                        class="fab fa-telegram"></i></a>
+                <a href="https://github.com/lyuchan" title="GitHub" aria-label="GitHub連結"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/channel/UCEjkbez05P4NR3x453tX5sA" title="YouTube"
+                    aria-label="YouTube連結"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:david12312330@gmail.com" title="Email" aria-label="Email連結"><i
+                        class="fas fa-envelope"></i></a>
             </div>
-            <p>© 2024 Lyuchan. All rights reserved.</p>
+            <p>© 2025 王律承 (Lyuchan Wang). All rights reserved.</p>
         </footer>
     </div>
+
+    <!-- 技能詳情模態框 -->
+    <div class="skill-modal" id="skillModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <i class="modal-icon"></i>
+                <h3 class="modal-title"></h3>
+            </div>
+            <div class="modal-body">
+                <p class="modal-description"></p>
+                <div class="skill-proficiency">
+                    <h4>熟練度</h4>
+                    <div class="proficiency-stars"></div>
+                    <div class="proficiency-score"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 技能詳情數據
+        const skillData = {
+            arduino: {
+                title: "Arduino",
+                icon: "fas fa-microchip",
+                description: "個人專案常用，能熟練運用各個感測器達成各種功能",
+                proficiency: 5.0
+            },
+            esp32: {
+                title: "ESP32",
+                icon: "fas fa-wifi",
+                description: "個人專案常用，能熟練利用其WIFI功能進行物聯網開發",
+                proficiency: 5.0
+            },
+            raspberrypi: {
+                title: "RaspberryPi",
+                icon: "fas fa-desktop",
+                description: "通常基於Node.js開發，能熟練運用各個GPIO進行各種功能開發",
+                proficiency: 5.0
+            },
+            stm32: {
+                title: "STM32",
+                icon: "fas fa-microchip",
+                description: "稍微接觸過，能熟練運用各個GPIO進行各種功能開發",
+                proficiency: 3.0
+            },
+            fpga: {
+                title: "FPGA/CPLD",
+                icon: "fas fa-cogs",
+                description: "曾參加技藝競賽，數位電子第七名，能運用VHDL開發",
+                proficiency: 3.5
+            },
+            html5: {
+                title: "HTML5",
+                icon: "fab fa-html5",
+                description: "能製作簡易網頁，也能運用CSS3進行美化",
+                proficiency: 4.5
+            },
+            css3: {
+                title: "CSS3",
+                icon: "fab fa-css3-alt",
+                description: "能製作簡易網頁，也能運用CSS3進行美化",
+                proficiency: 3.5
+            },
+            javascript: {
+                title: "JavaScript",
+                icon: "fab fa-js",
+                description: "能利用JavaScript進行網頁互動開發，也能運用於後端開發",
+                proficiency: 4.5
+            },
+            nodejs: {
+                title: "Node.js",
+                icon: "fab fa-node-js",
+                description: "能運用Node.js進行後端開發",
+                proficiency: 4.5
+            },
+            python: {
+                title: "Python",
+                icon: "fab fa-python",
+                description: "有稍微接觸過，能運用於各種功能開發",
+                proficiency: 3.0
+            },
+            cpp: {
+                title: "C/C++",
+                icon: "fas fa-code",
+                description: "常用於Arduino開發",
+                proficiency: 4.5
+            },
+            lighting: {
+                title: "燈光",
+                icon: "fas fa-lightbulb",
+                description: "能熟練運用tiger touch進行燈光控制",
+                proficiency: 3.0
+            },
+            audio: {
+                title: "音響",
+                icon: "fas fa-volume-up",
+                description: "能熟練運用M32、QU32等數位控台",
+                proficiency: 4.0
+            },
+            video: {
+                title: "視訊工程",
+                icon: "fas fa-video",
+                description: "能熟練運用OBS、VMIX以及導播機，能自行進行系統設計",
+                proficiency: 4.5
+            }
+        };
+
+        // 模態框功能
+        const modal = document.getElementById('skillModal');
+        const closeBtn = document.querySelector('.close-modal');
+        const skillTags = document.querySelectorAll('.skill-tag');
+
+        // 生成星星評分
+        function generateStars(score) {
+            const starsContainer = document.querySelector('.proficiency-stars');
+            starsContainer.innerHTML = '';
+
+            const fullStars = Math.floor(score);
+            const hasHalfStar = score % 1 >= 0.5;
+
+            // 添加實心星星
+            for (let i = 0; i < fullStars; i++) {
+                const star = document.createElement('i');
+                star.className = 'fas fa-star';
+                starsContainer.appendChild(star);
+            }
+
+            // 添加半星（如果有的話）
+            if (hasHalfStar) {
+                const halfStar = document.createElement('i');
+                halfStar.className = 'fas fa-star-half-alt';
+                starsContainer.appendChild(halfStar);
+            }
+
+            // 添加空心星星
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                const emptyStar = document.createElement('i');
+                emptyStar.className = 'far fa-star';
+                starsContainer.appendChild(emptyStar);
+            }
+        }
+
+        // 點擊技能標籤顯示模態框
+        skillTags.forEach(tag => {
+            tag.addEventListener('click', function () {
+                const skillId = this.getAttribute('data-skill');
+                const skill = skillData[skillId];
+
+                if (skill) {
+                    // 更新模態框內容
+                    document.querySelector('.modal-icon').className = `modal-icon ${skill.icon}`;
+                    document.querySelector('.modal-title').textContent = skill.title;
+                    document.querySelector('.modal-description').textContent = skill.description;
+
+                    // 更新熟練度評分
+                    generateStars(skill.proficiency);
+                    document.querySelector('.proficiency-score').textContent = `${skill.proficiency}/5`;
+
+                    // 顯示模態框
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // 關閉模態框
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ESC鍵關閉模態框
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
