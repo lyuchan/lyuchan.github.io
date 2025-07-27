@@ -285,7 +285,7 @@
                     </g>
                 </g>
                 <g id="_電路被觸發" data-name="電路被觸發">
-                    <g id="_地下水正常-2" data-name="地下水正常" v-show="!U1">
+                    <g id="_地下水正常-2" data-name="地下水正常" v-show="!U1&&!COS">
                         <line x1="460.46" y1="161.08" x2="460.46" y2="154.16"
                             style="fill: none; stroke: #e60012; stroke-miterlimit: 10;" />
                         <line x1="480.03" y1="154.86" x2="460.46" y2="154.86"
@@ -333,7 +333,7 @@
                         <line x1="355.08" y1="109.98" x2="355.08" y2="144.54"
                             style="fill: none; stroke: #e60012; stroke-miterlimit: 10;" />
                     </g>
-                    <g id="_地下水異常-2" data-name="地下水異常" v-show="U1">
+                    <g id="_地下水異常-2" data-name="地下水異常" v-show="U1&&!COS">
                         <line x1="495.65" y1="216.2" x2="495.83" y2="253.74"
                             style="fill: none; stroke: #e60012; stroke-miterlimit: 10;" />
                         <line x1="575.5" y1="234.97" x2="495.83" y2="234.97"
@@ -1958,6 +1958,7 @@
             },
             COS(newVal, oldVal) {
                 if (newVal == true && oldVal == false) {//自動到手動
+                    this.BZ = false;
                     this.MC = false;
                 } else {//手動到自動
                     this.MC = false;
