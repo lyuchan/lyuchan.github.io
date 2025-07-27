@@ -202,6 +202,10 @@
                 transform: rotate(360deg);
             }
         }
+
+        .circuit1 {
+            stroke-width: 3px;
+        }
     </style>
 </head>
 
@@ -246,11 +250,11 @@
                     <rect id="_受水高水" v-show="water2display>=2" data-name="受水高水" x="659.5" y="373.45" width="88.78"
                         height="26.89" style="fill: #00a0e9; stroke-width: 0px;" />
                 </g>
-                <g id="_電路" data-name="電路">
+                <g id="_電路" data-name="電路" class="circuit1">
                     <g>
                         <g id="_地下水正常" data-name="地下水正常">
                             <line x1="460.46" y1="161.08" x2="460.46" y2="154.16"
-                                style="fill: none; stroke: #231815; stroke-miterlimit: 10;" />
+                                style="fill: none; stroke: #231815; stroke-miterlimit: 10; " />
                             <line x1="480.03" y1="154.86" x2="460.46" y2="154.86"
                                 style="fill: none; stroke: #231815; stroke-miterlimit: 10;" />
                         </g>
@@ -450,7 +454,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="_電路被觸發" data-name="電路被觸發">
+                <g id="_電路被觸發" data-name="電路被觸發" class="circuit1">
                     <g id="_地下水正常-2" data-name="地下水正常" v-show="!U1&&!COS">
                         <line x1="460.46" y1="161.08" x2="460.46" y2="154.16"
                             style="fill: none; stroke: #e60012; stroke-miterlimit: 10;" />
