@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電路模擬軟體 - 題目選單</title>
+    <style>
+        /* 重置默認樣式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+
+        .topics-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .topic-card {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            text-align: left;
+            width: 100%;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            background: linear-gradient(45deg, #45a049, #4CAF50);
+        }
+
+        .topic-card:active {
+            transform: translateY(-1px);
+        }
+
+        .topic-card.disabled {
+            background: linear-gradient(45deg, #999, #777);
+            box-shadow: 0 4px 15px rgba(153, 153, 153, 0.3);
+            cursor: pointer;
+        }
+
+        .topic-card.disabled:hover {
+            background: linear-gradient(45deg, #777, #555);
+            box-shadow: 0 8px 25px rgba(153, 153, 153, 0.4);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .topic-card {
+                padding: 15px 20px;
+                font-size: 1.1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topic-card {
+                padding: 12px 15px;
+                font-size: 1em;
+            }
+        }
+
+        /* 動畫效果 */
+        .container {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .topic-card {
+            animation: fadeInScale 0.6s ease-out backwards;
+        }
+
+        .topics-grid>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .topics-grid>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .topics-grid>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .topics-grid>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .topics-grid>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .topics-grid>*:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .topics-grid>*:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .topics-grid>*:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .topics-grid>*:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .topics-grid>*:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script>
+        function showComingSoon() {
+            alert('🚧 正在製作中，敬請期待！');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>室內配線電路模擬軟體</h1>
+        <p class="subtitle">選擇一個題目開始模擬</p>
+
+        <div class="topics-grid">
+            <a href="1.html" class="topic-card">
+                📚 第一題 手動、自動液位控制電路圖
+            </a>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第二題 單相感應電動機正逆轉控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第三題 電動機故障警報控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第四題 兩部電動機自動交替運轉控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第五題 簡易昇降機控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第六題 近接開關控制電動機交替運轉與停止控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第七題 常用電源與備用電源自動切換控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第八題 單相感應電動機 械停車場控制電圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第九題 單相感應電動機瞬間停電再啟動控制電路圖
+            </div>
+            <div class="topic-card disabled" onclick="showComingSoon()">
+                📚 第十題 單相感應電動機手動正逆轉兩處控制電路圖
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 王律承 (Lyuchan Wang). All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>
