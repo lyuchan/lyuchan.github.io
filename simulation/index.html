@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <title>電路模擬軟體 - 題目選單</title>
     <style>
         /* 重置默認樣式 */
@@ -93,9 +95,12 @@
         }
 
         .footer {
+            text-align: center;
+            padding: 25px 0;
+
+            color: #000;
+            border-radius: 0 0 15px 15px;
             margin-top: 30px;
-            color: #666;
-            font-size: 0.9em;
         }
 
         /* 響應式設計 */
@@ -193,6 +198,27 @@
                 transform: scale(1);
             }
         }
+
+        .footer .social-links {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .footer a {
+            color: #575757;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 40px;
+            display: inline-block;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #6d65c7;
+            transform: scale(1.2);
+        }
     </style>
     <script>
         function showComingSoon() {
@@ -240,6 +266,23 @@
         </div>
 
         <div class="footer">
+            <div class="social-links">
+                <a href="https://lyuchan.com/" title="個人網站" aria-label="個人網站連結"><i
+                    class="fa-solid  fa-circle-user"></i></a>
+                <a href="https://www.instagram.com/lyuchan0831/" title="Instagram" aria-label="Instagram連結"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100015250785911" title="Facebook"
+                    aria-label="Facebook連結"><i class="fab fa-facebook"></i></a>
+                <a href="https://t.me/lyuchanwang" title="Telegram" aria-label="Telegram連結"><i
+                        class="fab fa-telegram"></i></a>
+                <a href="https://github.com/lyuchan" title="GitHub" aria-label="GitHub連結"><i
+                        class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/channel/UCEjkbez05P4NR3x453tX5sA" title="YouTube"
+                    aria-label="YouTube連結"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:david12312330@gmail.com" title="Email" aria-label="Email連結"><i
+                        class="fas fa-envelope"></i></a>
+            </div>
+            
             <p>© 2025 王律承 (Lyuchan Wang). All rights reserved.</p>
         </div>
     </div>
