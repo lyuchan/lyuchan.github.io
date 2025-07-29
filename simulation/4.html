@@ -1682,8 +1682,10 @@
                     }, 1000);
                 } else {
                     clearInterval(this.t1timer);
-                    this.TR1t = false;
-                    this.t1 = 5;
+                    setTimeout(() => {
+                        this.TR1t = false;
+                        this.t1 = 5;
+                    }, 1000);
                 }
             },
             TR2(newVal, oldVal) {
@@ -1697,8 +1699,10 @@
                     }, 1000);
                 } else {
                     clearInterval(this.t2timer);
-                    this.TR2t = false;
-                    this.t2 = 5;
+                    setTimeout(() => {
+                        this.TR2t = false;
+                        this.t2 = 5;
+                    }, 1000);
                 }
             },
             BZ(newVal, oldVal) {
