@@ -36,6 +36,10 @@
 
             <section class="skills">
                 <h2>專業技能</h2>
+                <p class="section-hint">
+                    <i class="fas fa-info-circle"></i>
+                    提示：點擊技能標籤可查看詳細資訊
+                </p>
                 <div class="skills-container">
                     <div class="skill-card">
                         <div class="skill-icon">
@@ -111,6 +115,44 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>專案作品</h2>
+                <p class="section-hint">
+                    <i class="fas fa-info-circle"></i>
+                    提示：點擊技術標籤可查看詳細資訊
+                </p>
+                <div class="projects-container">
+                    <div class="project-card">
+                        <div class="project-thumbnail">
+                            <img src="img/simulation.png" alt="室內配線電路模擬軟體截圖"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="project-icon-fallback" style="display: none;">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>室內配線電路模擬軟體</h3>
+                            <p class="project-description">基於網頁開發的室內配線電路模擬軟體，讓學員能夠在網頁上進行電路模擬</p>
+                            <div class="project-tech">
+                                <span class="tech-tag skill-tag" data-skill="html5">HTML5</span>
+                                <span class="tech-tag skill-tag" data-skill="css3">CSS3</span>
+                                <span class="tech-tag skill-tag" data-skill="javascript">JavaScript</span>
+                                <span class="tech-tag skill-tag" data-skill="vuejs">Vue.js</span>
+                                <span class="tech-tag skill-tag" data-skill="illustrator">Adobe Illustrator</span>
+                            </div>
+                            <div class="project-links">
+
+                                <a href="simulation/index.html" class="project-link" title="查看網頁">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>室內配線電路模擬軟體</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </main>
@@ -239,6 +281,18 @@
                 icon: "fas fa-video",
                 description: "能熟練運用OBS、VMIX以及導播機，能自行進行系統設計",
                 proficiency: 4.5
+            },
+            vuejs: {
+                title: "Vue.js",
+                icon: "fab fa-vuejs",
+                description: "能熟練使用Vue2進行網頁開發",
+                proficiency: 3.5
+            },
+            illustrator: {
+                title: "Adobe Illustrator",
+                icon: "fas fa-palette",
+                description: "能熟練運用Illustrator進行向量圖片編輯",
+                proficiency: 2.0
             }
         };
 
